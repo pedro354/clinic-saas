@@ -2,7 +2,7 @@
 // Define layouts, páginas e navegação.
 import { createBrowserRouter } from "react-router";
 import App from "../App";
-import Teste from "../pages/Teste";
+import Teste from "../../test/Teste";
 
 const router = createBrowserRouter([
     {

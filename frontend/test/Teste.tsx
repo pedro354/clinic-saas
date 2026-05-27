@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import api from "../services/api.test";
+import api from "./api.test";
 
 // Página mock temporária para validar React Router.
 export default function Teste(){
