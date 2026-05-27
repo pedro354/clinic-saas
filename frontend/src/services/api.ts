@@ -1,19 +1,23 @@
 import axios from "axios";
-import type { AxiosResponse } from "axios";
 
-type messageTeste = {
-    id: number;
-    message: string;
+type loginData = {
+    email: string;
+    password: string;
+}
+type loginResponse = {
+    token: string;
+
 }
 
-const getTeste = async():Promise<AxiosResponse<messageTeste>> => {
-    const response = await axios.get<messageTeste>(`http://localhost:3000/api/`);
-    return response;
-}
 /* const getApointments = async() =>{
     const response = await axios.get("/appointments");
-    return response;
+    return response;}*/
+
+const login = async(data: loginData):Promise<loginResponse> => {
+    const response = await axios.post<loginResponse>(`http://localhost:3000/api/login`, data);
+    return response.data;
 }
- */export default {
-    getTeste
+ export default {
+    login
+
 };
