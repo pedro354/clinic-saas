@@ -13,3 +13,52 @@ datasource db {
   
 }
 
+model User  {
+  id      Int  @id @default(autoincrement())
+  name    String
+  email   String  @unique
+  password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Define a relação entre o usuário e os pacientes
+  patients Patient[]
+  // Define a relação entre o usuário e as disponibilidades da agenda
+  scheduleAvailabilities ScheduleAvailability[]  
+}
+
+model Patient {
+  id      Int @id @default(autoincrement())
+  name    String
+  phone   String?
+  //Define a relação entre o usuario e o paciente
+  user    User @relation(fields: [userId], references: [id])
+  userId  Int
+  // Define a relação entre o paciente e as consultas
+  appointments Appointment[]
+
+}
+
+model Appointment {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  description String?
+  // Define a relação entre o paciente e a consulta
+  patient     Patient @relation(fields: [patientId], references: [id])
+  patientId   Int
+  status     AppointmentStatus   @default(SCHEDULED)
+}
+
+model ScheduleAvailability {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  // Define a disponibilidade da agenda do psicólogo
+  isAvailable Boolean @default(true)
+  user      User @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELED
+}
