@@ -4,11 +4,11 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "target": "es2022",
-    "module": "commonjs",
+    "target": "es2023",
+    "module": "esnext",
     "rootDir": "./src",
     "outDir": "./dist",
     "types": ["node"]
     },
-  "include": ["src/**/*.ts", "src/app.tsx", "src/server.tsx"]
+  "include": ["src/**/*.ts", "src/app.tsx", "src/server.tsx", "tests/teste.ts"]
 }
