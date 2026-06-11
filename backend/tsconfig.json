@@ -6,7 +6,6 @@
     "skipLibCheck": true,
     "target": "es2023",
     "module": "esnext",
-    "rootDir": "./src",
     "outDir": "./dist",
     "types": ["node"]
     },
